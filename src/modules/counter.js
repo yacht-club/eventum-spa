@@ -1,4 +1,4 @@
-import createReducer from '../utils/createReducer';
+import createReducer from 'utils/createReducer';
 
 export const INCREMENT = 'COUNTER/INCREMENT';
 export const increment = () => ({ type: INCREMENT });

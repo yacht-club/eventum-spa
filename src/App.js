@@ -3,13 +3,12 @@ import { ThemeProvider } from 'styled-components';
 import { Provider as StoreProvider } from 'react-redux';
 import { createBrowserHistory } from 'history';
 
-import createStore from './store';
+import configureStore from './store';
 import Router from './Router';
 import { GlobalStyles, theme } from './theme';
 
 const history = createBrowserHistory();
-
-const store = createStore(history);
+const store = configureStore(history);
 
 const App = () => (
   <StoreProvider store={store}>

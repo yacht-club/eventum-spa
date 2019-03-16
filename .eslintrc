@@ -7,5 +7,12 @@
     "prettier/prettier": "error",
     "react/prop-types": [0],
     "no-underscore-dangle": ["error", { "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] }]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
   }
 }
