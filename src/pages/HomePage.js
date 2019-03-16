@@ -1,9 +1,9 @@
 import React from 'react';
-import Button from '../components/common/Button';
+import CounterContainer from '../containers/CounterContainer';
 
 const HomePage = () => (
   <div>
-    <Button>+</Button>
+    <CounterContainer />
   </div>
 );
 
