@@ -1,11 +1,11 @@
 import { put, takeEvery, delay } from 'redux-saga/effects';
-import { increment } from '../reducers/counter';
+import * as counter from '../modules/counter';
 
 function* asyncIncrement() {
   yield delay(1000);
-  yield put(increment());
+  yield put(counter.increment());
 }
 
 export default function*() {
-  yield takeEvery('COUNTER/ASYNC/INCREMENT/START', asyncIncrement);
+  yield takeEvery(counter.ASYNC_INCREMENT_START, asyncIncrement);
 }

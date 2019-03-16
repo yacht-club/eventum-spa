@@ -1,9 +1,15 @@
-import { applyMiddleware, compose, createStore } from 'redux';
-import { routerMiddleware } from 'connected-react-router';
+import { applyMiddleware, compose, createStore, combineReducers } from 'redux';
+import { routerMiddleware, connectRouter } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
 
-import createRootReducer from './reducers';
+import reducers from './modules';
 import rootSaga from './sagas';
+
+const createRootReducer = history =>
+  combineReducers({
+    ...reducers,
+    router: connectRouter(history),
+  });
 
 const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
