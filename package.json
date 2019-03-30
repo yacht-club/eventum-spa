@@ -5,6 +5,7 @@
   "dependencies": {
     "connected-react-router": "^6.3.2",
     "history": "^4.9.0",
+    "moment": "^2.24.0",
     "polished": "^3.0.3",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
@@ -40,13 +41,5 @@
     "lint-staged": "^8.1.5",
     "prettier": "^1.16.4",
     "eslint-config-airbnb": "^17.1.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": "eslint"
   }
 }

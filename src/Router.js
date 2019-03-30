@@ -2,15 +2,31 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 
-import HomePage from './pages/HomePage';
-import NotFoundPage from './pages/NotFoundPage';
+import HomePage from 'pages/HomePage';
+import EventsPage from 'pages/EventsPage';
+import TasksPage from 'pages/TasksPage';
+import UsersPage from 'pages/UsersPage';
+import EventPage from 'pages/EventPage';
+
+import NotFoundPage from 'pages/NotFoundPage';
+import Header from 'components/Header';
+import PageContainer from 'components/PageContainer';
 
 const RootRouter = ({ history }) => (
   <ConnectedRouter history={history}>
-    <Switch>
-      <Route path="/" exact component={HomePage} />
-      <Route component={NotFoundPage} />
-    </Switch>
+    <React.Fragment>
+      <Header />
+      <PageContainer>
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/events" exact component={EventsPage} />
+          <Route path="/events/:id" exact component={EventPage} />
+          <Route path="/tasks" exact component={TasksPage} />
+          <Route path="/users" exact component={UsersPage} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </PageContainer>
+    </React.Fragment>
   </ConnectedRouter>
 );
 
