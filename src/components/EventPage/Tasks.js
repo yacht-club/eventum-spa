@@ -1,27 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Title from 'components/common/Title';
-import Task from '../TasksPage/Task';
+import Task from '../Task';
+import { getTasksForEvent } from '../../apis/tasks';
 
 const Tasks = ({
-  className,
-  match: {
-    params: { id },
-  },
-}) => {
+                 className,
+                 match: {
+                   params: { id },
+                 },
+               }) => {
   console.log(`loading tasks for event: ${id}`);
 
-  const tasks = [
-    { id: 1, name: 'Закупка футболок с принтами партнеров', status: "CREATED", deadlineTime: '1553983004'},
-    { id: 2, name: 'Уточнить представителей партнеров', status: "IN_PROGRESS", deadlineTime: '1553983004' },
-    { id: 3, name: 'Разослать приглашения участникам', status: "RESOLVED", deadlineTime: '1553983004' },
-  ];
+  const [tasks, setTasks] = useState({ isLoading: true, data: [] });
+
+  useEffect(() => {
+    getTasksForEvent({ id }).then(data => setTasks({ isLoading: false, data: data }));
+  });
 
   return (
     <div className={className}>
       <Title>Задачи</Title>
 
-      {tasks.map(task => (
+      {tasks.data.map(task => (
         <Task {...task} />
       ))}
     </div>

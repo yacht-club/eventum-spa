@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Title from 'components/common/Title';
-import Task from '../TasksPage/Task';
+import Task from '../Task';
+import { getTasksForEvent, getTasksForPerson } from '../../apis/tasks';
 
 const Tasks = ({
                  className,
@@ -11,7 +12,13 @@ const Tasks = ({
                }) => {
   console.log(`loading tasks for event: ${id}`);
 
-  const tasks = [
+  const [tasks, setTasks] = useState({ isLoading: true, data: [] });
+
+  useEffect(() => {
+    getTasksForPerson({ id }).then(data => setTasks({ isLoading: false, data: data }));
+  });
+
+  const tasksMock = [
     { id: 1, name: 'Закупка футболок с принтами партнеров', status: 'CREATED', deadlineTime: '1553983004' },
     { id: 2, name: 'Разослать приглашения участникам', status: 'RESOLVED', deadlineTime: '1553983004' },
     { id: 3, name: 'Разослать приглашения участникам', status: "RESOLVED", deadlineTime: '1553983004' },

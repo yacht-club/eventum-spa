@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import Box from 'components/common/Box';
-import { convertTimestampToDate } from '../../utils/timeUtils';
+import { convertTimestampToDate } from '../utils/timeUtils';
 
 const Name = styled.div`
   font-weight: 700;
