@@ -1,13 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
-import Title from 'components/common/Title';
+import { Route, Switch } from 'react-router';
+import Tasks from '../components/EventPage/Tasks';
 
-const TasksPage = ({ className }) => (
-  <div className={className}>
-    <Title>Задачи</Title>
-  </div>
+const TasksPage = () => (
+  <Switch>
+    <Route path="/tasks/" exact component={Tasks} />
+    <Route path="/tasks/:id/" exact component={Tasks} />
+  </Switch>
 );
 
-const StyledTasksPage = styled(TasksPage)``;
-
-export default StyledTasksPage;
+export default TasksPage;
