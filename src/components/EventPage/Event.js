@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Box from 'components/common/Box';
 import { convertTimestampToDate, convertMilisToHours } from 'utils/timeUtils';
+import { getEvent } from 'apis/events';
 
 const Title = styled.h1`
   margin: 16px 0 0 0;
@@ -48,34 +49,36 @@ const datesText = (dateFromMilis, dateToMilis) =>
 const timesText = (timeFromMilis, timeTillMilis) =>
   `c ${convertMilisToHours(timeFromMilis)}:00 до ${convertMilisToHours(timeTillMilis)}:00`;
 
-const Event = ({ className }) => {
-  const name = 'Хакатон BESTHACK';
-  const dateFromMilis = 1553782940;
-  const dateToMilis = 1553955713;
-  const timeFromMilis = 28800000;
-  const timeTillMilis = 64800000;
-  const description =
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita repellat error nihil quos praesentium! Quam necessitatibus sed, dicta excepturi totam, saepe autem, quaerat sit natus a ipsum rem. Quia!';
-  const place = 'Точка кипения';
+const Event = ({
+  className,
+  match: {
+    params: { id },
+  },
+}) => {
+  const [event, setEvents] = useState({ isLoading: true });
+
+  useEffect(() => {
+    getEvent({ id }).then(data => setEvents({ isLoading: false, ...data }));
+  });
 
   return (
     <div className={className}>
       <Box>
         <Content>
-          <Title>{name}</Title>
+          <Title>{event.name}</Title>
         </Content>
         <Separator />
         <Content>
           <SubTitle>Дата проведения</SubTitle>
-          <Dates>{datesText(dateFromMilis, dateToMilis)}</Dates>
-          <Time>{timesText(timeFromMilis, timeTillMilis)}</Time>
+          <Dates>{datesText(event.dateFromMilis, event.dateToMilis)}</Dates>
+          <Time>{timesText(event.timeFromMilis, event.timeTillMilis)}</Time>
           <SubTitle>Местро проведения</SubTitle>
-          <Place>{place}</Place>
+          <Place>{event.place}</Place>
         </Content>
         <Separator />
         <Content>
           <SubTitle>Описание</SubTitle>
-          <Description>{description}</Description>
+          <Description>{event.description}</Description>
         </Content>
       </Box>
     </div>

@@ -27,9 +27,9 @@ const Description = styled.div`
   line-height: 1.2rem;
 `;
 
-const Event = ({ className, name, description, history, id, dateFromMilis, dateToMilis }) => (
+const Event = ({ className, name, description, history, eventUid, dateFromMilis, dateToMilis }) => (
   <div className={className} role="link">
-    <Box onClick={() => history.push(`/events/${id}`)}>
+    <Box onClick={() => history.push(`/events/${eventUid}`)}>
       <Meta>
         <Title>{name}</Title>
         <Dates>

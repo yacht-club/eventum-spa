@@ -2,30 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import Box from 'components/common/Box';
+import Tag from 'components/common/Tag';
+import TagContainer from 'components/common/TagContainer';
 
 const Name = styled.div`
   font-weight: 700;
   font-size: 1.25rem;
-`;
-
-const Tag = styled.div`
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 5px 10px;
-  border-radius: 100px;
-  background-color: #eee;
-
-  & + & {
-    margin-left: 10px;
-  }
-`;
-
-const TagContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  max-width: 100%;
-  overflow: scroll;
 `;
 
 const ContactSource = styled.a`
