@@ -12,7 +12,7 @@ const Events = ({ className }) => {
 
   useEffect(() => {
     getEvents().then(data => setEvents({ isLoading: false, data }));
-  });
+  }, []);
 
   return (
     <div className={className}>

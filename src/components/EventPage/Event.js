@@ -62,7 +62,7 @@ const Event = ({
 
   useEffect(() => {
     getEvent({ id }).then(data => setEvents({ isLoading: false, ...data }));
-  });
+  }, []);
 
   return (
     <Fallback isLoading={event.isLoading} Component={Loader}>

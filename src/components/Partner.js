@@ -28,9 +28,9 @@ const MetaContainer = styled.div`
   justify-content: space-between;
 `;
 
-const Partner = ({ className, name, partnerType, email, site, history, id }) => (
+const Partner = ({ className, name, partnerType, email, site, history, ext_id, tags }) => (
   <div className={className}>
-    <Box onClick={() => history.push(`/partners/${id}/`)}>
+    <Box onClick={() => history.push(`/partners/${ext_id}/`)}>
       <MetaContainer>
         <Name>{name}</Name>
         {partnerType === 'LEGAL' ? (
@@ -39,11 +39,7 @@ const Partner = ({ className, name, partnerType, email, site, history, id }) => 
           <ContactSource href={`malito:${email}`}>google@google.com</ContactSource>
         )}
       </MetaContainer>
-      <TagContainer>
-        <Tag>Партнер</Tag>
-        <Tag>Благотворительность</Tag>
-        <Tag>Интегратор</Tag>
-      </TagContainer>
+      <TagContainer>{tags ? tags.map(tag => <Tag key={tag}>{tag}</Tag>) : null}</TagContainer>
     </Box>
   </div>
 );

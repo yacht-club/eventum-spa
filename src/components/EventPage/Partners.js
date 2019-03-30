@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import Title from 'components/common/Title';
 import Partner from 'components/Partner';
+import Fallback from 'components/common/Fallback';
+import Loader from 'components/common/Loader';
+
+import { getPartners } from 'apis/partners';
 
 const Partners = ({
   className,
@@ -10,20 +14,20 @@ const Partners = ({
     params: { id },
   },
 }) => {
-  console.log(`loading partners for event: ${id}`);
+  const [partners, setPartners] = useState({ isLoading: true, data: [] });
 
-  const partners = [
-    { id: 1, name: 'Фонд Огромное Сердце', partnerType: 'LEGAL', site: 'https://google.com' },
-    { id: 2, name: 'Константин Хабенский', partnerType: 'INDIVIDUAL', email: 'google@google.com' },
-  ];
+  useEffect(() => {
+    getPartners({ id }).then(data => setPartners({ isLoading: false, data }));
+  }, []);
 
   return (
     <div className={className}>
       <Title>Партнеры</Title>
-
-      {partners.map(partner => (
-        <Partner {...partner} />
-      ))}
+      <Fallback isLoading={partners.isLoading} Component={Loader}>
+        {partners.data.map(partner => (
+          <Partner {...partner} />
+        ))}
+      </Fallback>
     </div>
   );
 };
