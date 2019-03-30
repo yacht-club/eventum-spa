@@ -3,7 +3,7 @@ import logoPng from './assets/logo3.png';
 
 const Logo = styled.div`
     height: 50px;
-    width: 206px;
+    width: 100px;
 
     background: url("${logoPng}") no-repeat center;
     background-size: contain;

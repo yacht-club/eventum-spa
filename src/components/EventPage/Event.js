@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import Box from 'components/common/Box';
 import { convertTimestampToDate, convertMilisToHours } from 'utils/timeUtils';
 import { getEvent } from 'apis/events';
+import OptionalRender from 'components/OptionalRender';
+import Fallback from 'components/common/Fallback';
+import Loader from 'components/common/Loader';
 
 const Title = styled.h1`
   margin: 16px 0 0 0;
@@ -62,26 +65,30 @@ const Event = ({
   });
 
   return (
-    <div className={className}>
-      <Box>
-        <Content>
-          <Title>{event.name}</Title>
-        </Content>
-        <Separator />
-        <Content>
-          <SubTitle>Дата проведения</SubTitle>
-          <Dates>{datesText(event.dateFromMilis, event.dateToMilis)}</Dates>
-          <Time>{timesText(event.timeFromMilis, event.timeTillMilis)}</Time>
-          <SubTitle>Местро проведения</SubTitle>
-          <Place>{event.place}</Place>
-        </Content>
-        <Separator />
-        <Content>
-          <SubTitle>Описание</SubTitle>
-          <Description>{event.description}</Description>
-        </Content>
-      </Box>
-    </div>
+    <Fallback isLoading={event.isLoading} Component={Loader}>
+      <div className={className}>
+        <Box>
+          <Content>
+            <Title>{event.name}</Title>
+          </Content>
+          <Separator />
+          <Content>
+            <SubTitle>Дата проведения</SubTitle>
+            <Dates>{datesText(event.dateFromMillis, event.dateTillMillis)}</Dates>
+            <OptionalRender when={event.timeFromMilis && event.timeTillMilis}>
+              <Time>{timesText(event.timeFromMilis, event.timeTillMilis)}</Time>
+            </OptionalRender>
+            <SubTitle>Местро проведения</SubTitle>
+            <Place>{event.place}</Place>
+          </Content>
+          <Separator />
+          <Content>
+            <SubTitle>Описание</SubTitle>
+            <Description>{event.description}</Description>
+          </Content>
+        </Box>
+      </div>
+    </Fallback>
   );
 };
 
