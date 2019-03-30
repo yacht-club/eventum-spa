@@ -27,23 +27,15 @@ const Description = styled.div`
   line-height: 1.2rem;
 `;
 
-const Event = ({
-  className,
-  name,
-  description,
-  history,
-  id,
-  dateFromMilis,
-  dateToMilis,
-  timeFromMilis,
-  timeTillMilis,
-}) => (
+const Event = ({ className, name, description, history, id, dateFromMilis, dateToMilis }) => (
   <div className={className} role="link">
     <Box onClick={() => history.push(`/events/${id}`)}>
       <Meta>
         <Title>{name}</Title>
         <Dates>
-          {convertTimestampToDate(dateFromMilis)} - {convertTimestampToDate(dateToMilis)}
+          {convertTimestampToDate(dateFromMilis)}
+          {'-'}
+          {convertTimestampToDate(dateToMilis)}
         </Dates>
       </Meta>
       <Description>{description}</Description>

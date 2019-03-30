@@ -14,7 +14,7 @@ const Logout = styled.button`
 
   height: 16px;
   width: 20px;
-
+  
   background-size: contain;
   background-repeat: no-repeat;
 

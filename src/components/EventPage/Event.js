@@ -42,39 +42,45 @@ const Place = styled.div`
   line-height: 1.2rem;
 `;
 
-const Event = ({ className, name, description, dateFromMilis, dateToMilis, timeFromMilis, timeTillMilis, place }) => (
-  <div className={className}>
-    <Box>
-      <Content>
-        <Title>{name}</Title>
-      </Content>
-      <Separator />
-      <Content>
-        <SubTitle>Дата проведения</SubTitle>
-        <Dates>
-          {convertTimestampToDate(dateFromMilis)}
-          {'-'}
-          {convertTimestampToDate(dateToMilis)}
-        </Dates>
-        <Time>
-          {'с '}
-          {convertMilisToHours(timeFromMilis)}
-          :00
-          {' до '}
-          {convertMilisToHours(timeTillMilis)}
-          :00
-        </Time>
-        <SubTitle>Местро проведения</SubTitle>
-        <Place>{place}</Place>
-      </Content>
-      <Separator />
-      <Content>
-        <SubTitle>Описание</SubTitle>
-        <Description>{description}</Description>
-      </Content>
-    </Box>
-  </div>
-);
+const datesText = (dateFromMilis, dateToMilis) =>
+  `${convertTimestampToDate(dateFromMilis)}-${convertTimestampToDate(dateToMilis)}`;
+
+const timesText = (timeFromMilis, timeTillMilis) =>
+  `c ${convertMilisToHours(timeFromMilis)}:00 до ${convertMilisToHours(timeTillMilis)}:00`;
+
+const Event = ({ className }) => {
+  const name = 'Хакатон BESTHACK';
+  const dateFromMilis = 1553782940;
+  const dateToMilis = 1553955713;
+  const timeFromMilis = 28800000;
+  const timeTillMilis = 64800000;
+  const description =
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita repellat error nihil quos praesentium! Quam necessitatibus sed, dicta excepturi totam, saepe autem, quaerat sit natus a ipsum rem. Quia!';
+  const place = 'Точка кипения';
+
+  return (
+    <div className={className}>
+      <Box>
+        <Content>
+          <Title>{name}</Title>
+        </Content>
+        <Separator />
+        <Content>
+          <SubTitle>Дата проведения</SubTitle>
+          <Dates>{datesText(dateFromMilis, dateToMilis)}</Dates>
+          <Time>{timesText(timeFromMilis, timeTillMilis)}</Time>
+          <SubTitle>Местро проведения</SubTitle>
+          <Place>{place}</Place>
+        </Content>
+        <Separator />
+        <Content>
+          <SubTitle>Описание</SubTitle>
+          <Description>{description}</Description>
+        </Content>
+      </Box>
+    </div>
+  );
+};
 
 const StyledEvent = styled(Event)``;
 

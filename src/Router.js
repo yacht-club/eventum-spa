@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 
-import HomePage from 'pages/HomePage';
 import EventsPage from 'pages/EventsPage';
 import TasksPage from 'pages/TasksPage';
 import UsersPage from 'pages/UsersPage';
@@ -18,9 +17,9 @@ const RootRouter = ({ history }) => (
       <Header />
       <PageContainer>
         <Switch>
-          <Route path="/" exact component={HomePage} />
+          <Route path="/" exact component={EventsPage} />
           <Route path="/events" exact component={EventsPage} />
-          <Route path="/events/:id" exact component={EventPage} />
+          <Route path="/events/:id" component={EventPage} />
           <Route path="/tasks" exact component={TasksPage} />
           <Route path="/users" exact component={UsersPage} />
           <Route component={NotFoundPage} />

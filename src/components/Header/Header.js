@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 
 import Container from 'components/common/Container';
 import Logo from './Logo';
 import NavBar from './NavBar';
 import UserBar from './UserBar';
+import MenuBar from './MenuBar';
 
 const Header = ({ className }) => (
   <div className={className}>
@@ -13,7 +14,10 @@ const Header = ({ className }) => (
       <Link to="/">
         <Logo />
       </Link>
-      <NavBar />
+      <Switch>
+        <Route path="/events/:id/" component={MenuBar} />
+        <Route component={NavBar} />
+      </Switch>
       <UserBar username="a.krinitsyn@qiwi.com" />
     </Container>
   </div>
