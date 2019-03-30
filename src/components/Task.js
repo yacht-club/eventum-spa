@@ -44,9 +44,9 @@ const getStatusName = status => {
   }
 };
 
-const Task = ({ className, name, status, deadlineTime, history, id }) => (
+const Task = ({ className, name, status, taskUid, deadlineTime, history, id }) => (
   <div className={className}>
-    <Box onClick={() => history.push(`/tasks/${id}/`)}>
+    <Box onClick={() => history.push(`/tasks/${taskUid}/`)}>
       <MetaContainer>
         <Name>{name}</Name>
         {getStatusName(status)}

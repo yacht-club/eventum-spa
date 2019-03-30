@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
-import Tasks from '../components/EventPage/Tasks';
+import Tasks from '../components/TasksPage/Tasks';
 import Task from '../components/TaskPage/Task';
 
 const TasksPage = () => (

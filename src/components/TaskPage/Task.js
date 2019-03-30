@@ -4,6 +4,8 @@ import Box from 'components/common/Box';
 import { getPartner } from 'apis/partners';
 import OptionalRender from 'components/OptionalRender';
 import { getTask } from '../../apis/tasks';
+import { convertTimestampToDate } from '../../utils/timeUtils';
+import { getUser } from '../../apis/users';
 
 const Title = styled.h1`
   margin: 16px 0 0 0;
@@ -42,10 +44,23 @@ const Task = ({
                 },
               }) => {
   const [task, setTask] = useState({ isLoading: true });
+  const [user, setUser] = useState({ isLoading: true });
+  const [partner, setPartner] = useState({ isLoading: true });
+  const fetchAll = async () => {
+    const task = await getTask({ id });
+    setTask({ ...task});
 
-  useEffect(() => {
-    getTask({ id }).then(data => setTask({ isLoading: false, ...data }));
-  });
+    const userId = task.prsExtId;
+    const user = await getUser({ userId });
+    setUser({ isLoading: false, ...user });
+
+    const partnerId = task.partnerExtId;
+    if (partnerId) {
+      const partner = await getPartner({ id: partnerId });
+      setPartner({ ...partner });
+    }
+  }
+  useEffect(() => {fetchAll()}, []);
 
   return (
     <div className={className}>
@@ -55,13 +70,17 @@ const Task = ({
         </Content>
         <Separator/>
         <Content>
-          <OptionalRender when={task.inn}>
-            <SubTitle>ИНН</SubTitle>
-            <Text>{task.status}</Text>
+          <OptionalRender when={task.deadlineTime}>
+            <SubTitle>Дедлайн</SubTitle>
+            <Text>{convertTimestampToDate(task.deadlineTime)}</Text>
           </OptionalRender>
-          <OptionalRender when={task.inn}>
-            <SubTitle>ИНН</SubTitle>
-            <Text>{task.inn}</Text>
+          <OptionalRender when={task.prsExtId}>
+            <SubTitle>Менеджер</SubTitle>
+            <Text>{user.username}</Text>
+          </OptionalRender>
+          <OptionalRender when={task.partnerExtId}>
+            <SubTitle>Партнер</SubTitle>
+            <Text>{partner.name}</Text>
           </OptionalRender>
         </Content>
         <Separator/>

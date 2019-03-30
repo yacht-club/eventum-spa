@@ -16,7 +16,7 @@ const Tasks = ({
 
   useEffect(() => {
     getTasksForEvent({ id }).then(data => setTasks({ isLoading: false, data: data }));
-  });
+  }, []);
 
   return (
     <div className={className}>
