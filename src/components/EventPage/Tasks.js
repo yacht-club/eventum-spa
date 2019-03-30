@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Title from 'components/common/Title';
 
 const Tasks = ({
   className,
@@ -9,9 +10,18 @@ const Tasks = ({
 }) => {
   console.log(`loading tasks for event: ${id}`);
 
-  return <div className={className}>TASKS WILL BE HERE</div>;
+  return (
+    <div className={className}>
+      <Title>Задачи</Title>
+      TASKS WILL BE HERE
+    </div>
+  );
 };
 
-const StyledTasks = styled(Tasks)``;
+const StyledTasks = styled(Tasks)`
+  ${Title} {
+    margin-bottom: 20px;
+  }
+`;
 
 export default StyledTasks;

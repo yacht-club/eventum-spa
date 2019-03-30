@@ -11,7 +11,7 @@ import MenuBar from './MenuBar';
 const Header = ({ className }) => (
   <div className={className}>
     <Container>
-      <Link to="/">
+      <Link to="/events">
         <Logo />
       </Link>
       <Switch>
