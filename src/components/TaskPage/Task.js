@@ -12,6 +12,10 @@ const Title = styled.h1`
   padding: 0;
   font-weight: 800;
   font-size: 2rem;
+
+  @media (max-width: 450px) {
+    font-size: 1.25rem;
+  }
 `;
 
 const SubTitle = styled.h2`
@@ -38,17 +42,17 @@ const Separator = styled.div`
 const Description = styled.div``;
 
 const Task = ({
-                className,
-                match: {
-                  params: { id },
-                },
-              }) => {
+  className,
+  match: {
+    params: { id },
+  },
+}) => {
   const [task, setTask] = useState({ isLoading: true });
   const [user, setUser] = useState({ isLoading: true });
   const [partner, setPartner] = useState({ isLoading: true });
   const fetchAll = async () => {
     const task = await getTask({ id });
-    setTask({ ...task});
+    setTask({ ...task });
 
     const userId = task.prsExtId;
     const user = await getUser({ userId });
@@ -60,7 +64,9 @@ const Task = ({
       setPartner({ ...partner });
     }
   };
-  useEffect(() => {fetchAll()}, []);
+  useEffect(() => {
+    fetchAll();
+  }, []);
 
   return (
     <div className={className}>
@@ -68,7 +74,7 @@ const Task = ({
         <Content>
           <Title>{task.name}</Title>
         </Content>
-        <Separator/>
+        <Separator />
         <Content>
           <OptionalRender when={task.deadlineTime}>
             <SubTitle>Дедлайн</SubTitle>
@@ -83,7 +89,7 @@ const Task = ({
             <Text>{partner.name}</Text>
           </OptionalRender>
         </Content>
-        <Separator/>
+        <Separator />
         <Content>
           <SubTitle>Описание</SubTitle>
           <Description>{task.description}</Description>

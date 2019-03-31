@@ -61,6 +61,17 @@ const StyledEvent = styled(Event)`
       box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
     }
   }
+
+  @media (max-width: 450px) {
+    ${Meta} {
+      flex-direction: column;
+    }
+
+    ${Title} {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+  }
 `;
 
 export default withRouter(StyledEvent);

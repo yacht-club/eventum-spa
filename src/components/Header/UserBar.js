@@ -38,6 +38,10 @@ const StyledUserBar = styled(UserBar)`
   ${Logout} {
     margin-left: 10px;
   }
+
+  @media (max-width: 450px) {
+    display: none;
+  }
 `;
 
 export default StyledUserBar;

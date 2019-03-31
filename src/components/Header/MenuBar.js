@@ -19,6 +19,7 @@ const MenuBar = ({
 );
 
 const StyledMenuBar = styled(MenuBar)`
+  overflow-x: scroll;
   display: flex;
   flex-direction: row;
   align-items: stretch;

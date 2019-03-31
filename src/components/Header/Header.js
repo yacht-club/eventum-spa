@@ -18,7 +18,7 @@ const Header = ({ className }) => (
         <Route path="/events/:id/" component={MenuBar} />
         <Route component={NavBar} />
       </Switch>
-      <UserBar username="a.krinitsyn@qiwi.com" />
+      <UserBar username="a.krinitsyn@google.com" />
     </Container>
   </div>
 );

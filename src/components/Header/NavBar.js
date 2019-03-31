@@ -15,6 +15,7 @@ const StyledNavBar = styled(NavBar)`
   flex-direction: row;
   align-items: stretch;
   margin-left: 30px;
+  overflow-x: scroll;
 
   a {
     text-decoration: none;

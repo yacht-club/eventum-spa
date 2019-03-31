@@ -1,5 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 
-const NotFoundPage = () => <div>Page Not Found</div>;
+const NotFoundPage = ({ history }) => {
+  useEffect(() => {
+    history.push('/events');
+  });
 
-export default NotFoundPage;
+  return <div>Loading</div>;
+};
+
+export default withRouter(NotFoundPage);
