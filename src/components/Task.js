@@ -18,17 +18,17 @@ const MetaContainer = styled.div`
 
 const CreatedStatus = styled.div`
   font-weight: bold;
-  color: #FFC336;
+  color: #ffc336;
 `;
 
 const InProgressStatus = styled.div`
   font-weight: bold;
-  color: #1B32B2;
+  color: #1b32b2;
 `;
 
 const ResolvedStatus = styled.div`
   font-weight: bold;
-  color: #43B258;
+  color: #43b258;
 `;
 
 const getStatusName = status => {
@@ -44,7 +44,7 @@ const getStatusName = status => {
   }
 };
 
-const Task = ({ className, name, status, taskUid, deadlineTime, history, id }) => (
+const Task = ({ className, name, status, taskUid, deadlineTime, history }) => (
   <div className={className}>
     <Box onClick={() => history.push(`/tasks/${taskUid}/`)}>
       <MetaContainer>

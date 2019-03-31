@@ -28,15 +28,15 @@ const MetaContainer = styled.div`
   justify-content: space-between;
 `;
 
-const Partner = ({ className, name, partnerType, email, site, history, ext_id, tags }) => (
+const Partner = ({ className, name, partner_type, email, site_url, history, ext_id, tags }) => (
   <div className={className}>
     <Box onClick={() => history.push(`/partners/${ext_id}/`)}>
       <MetaContainer>
         <Name>{name}</Name>
-        {partnerType === 'LEGAL' ? (
-          <ContactSource href={site}>{site}</ContactSource>
+        {partner_type === 'LEGAL' ? (
+          <ContactSource href={site_url}>{site_url}</ContactSource>
         ) : (
-          <ContactSource href={`malito:${email}`}>google@google.com</ContactSource>
+          <ContactSource href={`malito:${email}`}>{email}</ContactSource>
         )}
       </MetaContainer>
       <TagContainer>{tags ? tags.map(tag => <Tag key={tag}>{tag}</Tag>) : null}</TagContainer>

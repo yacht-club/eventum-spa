@@ -4,6 +4,7 @@ import Event from 'components/EventPage/Event';
 import Tasks from 'components/EventPage/Tasks';
 import Partners from 'components/EventPage/Partners';
 import History from 'components/EventPage/History';
+import CreateTask from 'components/EventPage/CreateTask';
 import { Route, Switch } from 'react-router-dom';
 
 const EventPage = () => (
@@ -13,6 +14,7 @@ const EventPage = () => (
     <Route path="/events/:id/tasks" exact component={Tasks} />
     <Route path="/events/:id/partners" exact component={Partners} />
     <Route path="/events/:id/history" exact component={History} />
+    <Route path="/events/:id/create/task/" exact component={CreateTask} />
   </Switch>
 );
 
