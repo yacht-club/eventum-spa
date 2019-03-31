@@ -67,7 +67,7 @@ const CreateTask = ({
   const descriptionRef = useRef(null);
 
   const submit = () => {
-    const name = managersRef.current.value;
+    const name = nameRef.current.value;
     const deadline = moment(deadlineRef.current.value, 'YYYY-MM-DD').valueOf();
     const managerUid = managersRef.current.value;
     const partnerUid = partnersRef.current.value;
