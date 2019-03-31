@@ -59,7 +59,7 @@ const Task = ({
       const partner = await getPartner({ id: partnerId });
       setPartner({ ...partner });
     }
-  }
+  };
   useEffect(() => {fetchAll()}, []);
 
   return (
