@@ -22,9 +22,7 @@ const RootRouter = ({ history }) => (
           <Route path="/tasks" component={TasksPage} />
           <Route path="/archive" component={UsersPage} />
           <Route path="/partners" component={PartnersPage} />
-
           <Route path="/create/event" component={CreateEventPage} />
-
           <Route component={NotFoundPage} />
         </Switch>
       </PageContainer>
