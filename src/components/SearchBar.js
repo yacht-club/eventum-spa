@@ -11,9 +11,13 @@ const StyledInput = styled.input`
   outline: none;
 `;
 
-const SearchBar = ({ className }) => (
+const SearchBar = ({ className, onChange, filter }) => (
   <div className={className}>
-    <StyledInput placeholder="Поиск по адресу сайта, названию или ID" />
+    <StyledInput
+      placeholder="Поиск по адресу сайта, названию или ID"
+      value={filter}
+      onChange={e => onChange(e.target.value)}
+    />
   </div>
 );
 

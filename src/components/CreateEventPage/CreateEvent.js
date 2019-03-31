@@ -23,7 +23,7 @@ const SubTitle = styled.h2`
   font-weight: 700;
   font-size: 1.1rem;
   line-height: 1.5rem;
-  color: #692EBA;
+  color: #692eba;
 `;
 
 const Content = styled.div`
@@ -42,6 +42,9 @@ const CreateEvent = ({ className, history }) => {
         </Content>
         <Separator />
         <Content>
+          <SubTitle>Название</SubTitle>
+          <Input />
+
           <SubTitle>Дата проведения</SubTitle>
           <Input type="date" id="start" name="trip-start" defaultValue="2019-07-22" />
 
@@ -49,13 +52,17 @@ const CreateEvent = ({ className, history }) => {
           <Input />
           <SubTitle>Описание</SubTitle>
           <TextArea />
-          <br/>
+          <br />
           <Button>Создать</Button>
         </Content>
       </Box>
     </div>
   );
 };
-const StyledCreateEvent = styled(CreateEvent)``;
+const StyledCreateEvent = styled(CreateEvent)`
+  ${Input}, ${TextArea} {
+    min-width: 60%;
+  }
+`;
 
 export default withRouter(StyledCreateEvent);

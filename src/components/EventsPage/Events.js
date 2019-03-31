@@ -10,8 +10,15 @@ import TitleContainer from 'components/TitleContainer';
 import PlusButton from 'components/PlusButton';
 import EventsList from './EventsList';
 
+const filterPredicate = filterValue => partner => {
+  const isNameAlike = partner.name.toLowerCase().startsWith(filterValue.toLowerCase());
+
+  return isNameAlike;
+};
+
 const Events = ({ className, history }) => {
   const [events, setEvents] = useState({ isLoading: true, data: [] });
+  const [filter, setFilter] = useState('');
 
   useEffect(() => {
     getEvents().then(data => setEvents({ isLoading: false, data }));
@@ -23,9 +30,9 @@ const Events = ({ className, history }) => {
         <Title>Мероприятия</Title>
         <PlusButton onClick={() => history.push('create/event/')} />
       </TitleContainer>
-      <SearchBar />
+      <SearchBar onChange={setFilter} value={filter} />
       <Fallback isLoading={events.isLoading} Component={Loader}>
-        <EventsList events={events.data} />
+        <EventsList events={events.data.filter(filterPredicate(filter))} />
       </Fallback>
     </div>
   );
