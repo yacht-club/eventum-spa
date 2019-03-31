@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
+import { withRouter } from 'react-router-dom';
+import TitleContainer from 'components/TitleContainer';
+import PlusButton from 'components/PlusButton';
 import Title from 'components/common/Title';
 import Partner from 'components/Partner';
 import Fallback from 'components/common/Fallback';
@@ -13,6 +15,7 @@ const Partners = ({
   match: {
     params: { id },
   },
+  history,
 }) => {
   const [partners, setPartners] = useState({ isLoading: true, data: [] });
 
@@ -22,7 +25,10 @@ const Partners = ({
 
   return (
     <div className={className}>
-      <Title>Партнеры</Title>
+      <TitleContainer>
+        <Title>Партнеры</Title>
+        <PlusButton onClick={() => history.push(`/events/${id}/create/task/`)} />
+      </TitleContainer>
       <Fallback isLoading={partners.isLoading} Component={Loader}>
         {partners.data.map(partner => (
           <Partner {...partner} />
@@ -36,6 +42,13 @@ const StyledPartners = styled(Partners)`
   ${Title} {
     margin-bottom: 20px;
   }
+
+  ${TitleContainer} {
+    ${PlusButton} {
+      margin-bottom: 20px;
+      margin-left: 10px;
+    }
+  }
 `;
 
-export default StyledPartners;
+export default withRouter(StyledPartners);

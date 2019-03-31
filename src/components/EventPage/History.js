@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Title from 'components/common/Title';
+import TitleContainer from 'components/TitleContainer';
+import PlusButton from 'components/PlusButton';
 import { getHistory } from '../../apis/history';
 import Loader from '../common/Loader';
 import Fallback from '../common/Fallback';
@@ -12,7 +14,6 @@ const History = ({
     params: { id },
   },
 }) => {
-  console.log(`loading history for event: ${id}`);
   const [history, setHistory] = useState({ isLoading: true, data: [] });
 
   useEffect(() => {
@@ -21,7 +22,11 @@ const History = ({
 
   return (
     <div className={className}>
-      <Title>История коммуникаций</Title>
+      <TitleContainer>
+        <Title>История коммуникаций</Title>
+        <PlusButton onClick={() => history.push(`/events/${id}/create/task/`)} />
+      </TitleContainer>
+
       <Fallback isLoading={history.isLoading} Component={Loader}>
         {history.data.map(historyItem => (
           <HistoryItem {...historyItem} />
@@ -34,6 +39,13 @@ const History = ({
 const StyledHistory = styled(History)`
   ${Title} {
     margin-bottom: 20px;
+  }
+
+  ${TitleContainer} {
+    ${PlusButton} {
+      margin-bottom: 20px;
+      margin-left: 10px;
+    }
   }
 `;
 

@@ -24,7 +24,7 @@ const StyledNavBar = styled(NavBar)`
     border-bottom: 3px solid transparent;
 
     &.active {
-      border-bottom: 3px solid #692EBA;
+      border-bottom: 3px solid #692eba;
     }
   }
 
