@@ -32,7 +32,7 @@ const StyledMenuBar = styled(MenuBar)`
     border-bottom: 3px solid transparent;
 
     &.active {
-      border-bottom: 3px solid #e02a45;
+      border-bottom: 3px solid #692EBA;
     }
   }
 

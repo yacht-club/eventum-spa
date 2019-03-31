@@ -8,11 +8,11 @@ const Input = styled.input`
   border-radius: 0px;
   transition: all 50ms ease 0s;
   border-radius: 0px;
-  border-bottom: 2px solid rgb(204, 204, 204);
+  border-bottom: 1px solid rgb(204, 204, 204);
 
   &:active,
   &:focus {
-    border-bottom: 2px solid #840f13;
+    border-bottom: 1px solid #692EBA;
   }
 `;
 

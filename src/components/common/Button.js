@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledButton = styled.button`
   background: none;
   outline: none;
-  color: #840f13;
+  color: #692EBA;
 
   height: 47px;
   min-width: 7em;
@@ -16,7 +16,7 @@ const StyledButton = styled.button`
   &:hover,
   &:focus,
   &:active {
-    border: 1px solid #840f13;
+    border: 1px solid #692EBA;
   }
 `;
 

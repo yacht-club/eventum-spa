@@ -11,7 +11,7 @@ const Name = styled.div`
 `;
 
 const ContactSource = styled.a`
-  color: #555;
+  color: #692EBA;
   outline: none;
 
   &:hover,

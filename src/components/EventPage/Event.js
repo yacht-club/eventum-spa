@@ -24,7 +24,7 @@ const SubTitle = styled.h2`
   font-weight: 700;
   font-size: 1.1rem;
   line-height: 1.5rem;
-  color: #840f13;
+  color: #692EBA;
 `;
 
 const Content = styled.div`

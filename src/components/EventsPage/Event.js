@@ -17,7 +17,7 @@ const Title = styled.div`
 `;
 
 const Dates = styled.div`
-  color: #666;
+  color: #692EBA;
   font-weight: 300;
 `;
 
