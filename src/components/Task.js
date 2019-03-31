@@ -18,7 +18,7 @@ const MetaContainer = styled.div`
 
 const CreatedStatus = styled.div`
   font-weight: bold;
-  color: #ffc336;
+  color: #FF761C;
 `;
 
 const InProgressStatus = styled.div`

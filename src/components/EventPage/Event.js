@@ -51,7 +51,7 @@ const Place = styled.div`
 `;
 
 const datesText = (dateFromMilis, dateToMilis) =>
-  `${convertTimestampToDate(dateFromMilis)}-${convertTimestampToDate(dateToMilis)}`;
+  `${convertTimestampToDate(dateFromMilis)} - ${convertTimestampToDate(dateToMilis)}`;
 
 const timesText = (timeFromMilis, timeTillMilis) =>
   `c ${convertMilisToHours(timeFromMilis)}:00 до ${convertMilisToHours(timeTillMilis)}:00`;

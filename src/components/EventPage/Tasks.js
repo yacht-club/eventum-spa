@@ -6,14 +6,16 @@ import { getTasksForEvent } from 'apis/tasks';
 import TitleContainer from 'components/TitleContainer';
 import PlusButton from 'components/PlusButton';
 import Task from '../Task';
+import Loader from '../common/Loader';
+import Fallback from '../common/Fallback';
 
 const Tasks = ({
-  className,
-  match: {
-    params: { id },
-  },
-  history,
-}) => {
+                 className,
+                 match: {
+                   params: { id },
+                 },
+                 history,
+               }) => {
   const [tasks, setTasks] = useState({ isLoading: true, data: [] });
 
   useEffect(() => {
@@ -24,12 +26,14 @@ const Tasks = ({
     <div className={className}>
       <TitleContainer>
         <Title>Задачи</Title>
-        <PlusButton onClick={() => history.push(`/events/${id}/create/task/`)} />
+        <PlusButton onClick={() => history.push(`/events/${id}/create/task/`)}/>
       </TitleContainer>
 
-      {tasks.data.map(task => (
-        <Task {...task} />
-      ))}
+      <Fallback isLoading={tasks.isLoading} Component={Loader}>
+        {tasks.data.map(task => (
+          <Task {...task} />
+        ))}
+      </Fallback>
     </div>
   );
 };

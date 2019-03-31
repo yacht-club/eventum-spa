@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Title from 'components/common/Title';
 import Task from '../Task';
 import { getTasksForPerson } from '../../apis/tasks';
+import Fallback from '../common/Fallback';
+import Loader from '../common/Loader';
 
 const Tasks = ({
                  className,
@@ -12,16 +14,18 @@ const Tasks = ({
   const [tasks, setTasks] = useState({ isLoading: true, data: [] });
 
   useEffect(() => {
-    getTasksForPerson({ }).then(data => setTasks({ isLoading: false, data: data }));
+    getTasksForPerson({}).then(data => setTasks({ isLoading: false, data: data }));
   }, []);
 
   return (
     <div className={className}>
       <Title>Задачи</Title>
 
-      {tasks.data.map(task => (
-        <Task {...task} />
-      ))}
+      <Fallback isLoading={tasks.isLoading} Component={Loader}>
+        {tasks.data.map(task => (
+          <Task {...task} />
+        ))}
+      </Fallback>
     </div>
   );
 };

@@ -34,7 +34,7 @@ const Event = ({ className, name, description, history, eventUid, dateFromMillis
         <Title>{name}</Title>
         <Dates>
           {convertTimestampToDate(dateFromMillis)}
-          {'-'}
+          {' - '}
           {convertTimestampToDate(dateTillMillis)}
         </Dates>
       </Meta>
