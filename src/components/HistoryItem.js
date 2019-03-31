@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import Box from 'components/common/Box';
 import { getPartner } from '../apis/partners';
+import TagContainer from './common/TagContainer';
+import Tag from './common/Tag';
 
 const Name = styled.div`
   font-weight: 700;
@@ -75,7 +77,13 @@ const HistoryItem = ({
           <Name>{partner.name}</Name>
           {getChannelName(channel)}
         </MetaContainer>
-        {partner.description}
+        {partner.tags ? (
+          <TagContainer>
+            {partner.tags.map(tag => (
+              <Tag key={tag}>{tag}</Tag>
+            ))}
+          </TagContainer>
+        ) : null}
         <Comment>Комментарий:</Comment>
         {comment}
       </Box>
