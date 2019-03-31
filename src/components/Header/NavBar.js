@@ -6,7 +6,7 @@ const NavBar = ({ className }) => (
   <div className={className}>
     <NavLink to="/events">Мероприятия</NavLink>
     <NavLink to="/tasks">Мои задачи</NavLink>
-    <NavLink to="/users">Пользователи</NavLink>
+    <NavLink to="/archive">Архив</NavLink>
   </div>
 );
 

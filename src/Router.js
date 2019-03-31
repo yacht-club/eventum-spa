@@ -4,8 +4,9 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import EventsPage from 'pages/EventsPage';
 import TasksPage from 'pages/TasksPage';
-import UsersPage from 'pages/UsersPage';
 import CreateEventPage from 'components/CreateEventPage/CreateEvent';
+import UsersPage from 'pages/ArchivePage';
+
 import NotFoundPage from 'pages/NotFoundPage';
 import Header from 'components/Header';
 import PageContainer from 'components/PageContainer';
@@ -19,7 +20,7 @@ const RootRouter = ({ history }) => (
         <Switch>
           <Route path="/events" component={EventsPage} />
           <Route path="/tasks" component={TasksPage} />
-          <Route path="/users" component={UsersPage} />
+          <Route path="/archive" component={UsersPage} />
           <Route path="/partners" component={PartnersPage} />
 
           <Route path="/create/event" component={CreateEventPage} />
